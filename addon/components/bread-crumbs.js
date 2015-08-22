@@ -9,9 +9,10 @@ const {
   getWithDefault,
   assert,
   typeOf,
-  setProperties,
   A: emberArray,
-  String: { classify }
+  String: { classify },
+  copy,
+  merge
 } = Ember;
 const {
   bool,
@@ -96,7 +97,7 @@ export default Component.extend({
       if (typeOf(breadCrumb) === 'null') {
         return;
       } else {
-        setProperties(breadCrumb, {
+        breadCrumb = merge(copy(breadCrumb), {
           path,
           isHead,
           isTail,
