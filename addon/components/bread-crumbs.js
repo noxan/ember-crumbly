@@ -2,6 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/bread-crumbs';
 import getOwner from 'ember-getowner-polyfill';
 
+const assign = Ember.assign || Ember.merge;
 const {
   get,
   Component,
@@ -9,9 +10,9 @@ const {
   getWithDefault,
   assert,
   typeOf,
-  setProperties,
   A: emberArray,
-  String: { classify }
+  String: { classify },
+  copy
 } = Ember;
 const {
   bool,
@@ -96,7 +97,7 @@ export default Component.extend({
       if (typeOf(breadCrumb) === 'null') {
         return;
       } else {
-        setProperties(breadCrumb, {
+        breadCrumb = assign(copy(breadCrumb), {
           path,
           isHead,
           isTail,
