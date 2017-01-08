@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import layout from '../templates/components/bread-crumbs';
-import getOwner from 'ember-getowner-polyfill';
 
 const assign = Ember.assign || Ember.merge;
 const {
@@ -10,6 +9,7 @@ const {
   getWithDefault,
   assert,
   typeOf,
+  getOwner,
   A: emberArray,
   String: { classify },
   copy
